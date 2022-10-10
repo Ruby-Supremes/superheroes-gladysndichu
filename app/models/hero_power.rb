@@ -1,6 +1,10 @@
 class HeroPower < ApplicationRecord
-    belongs_to :hero
-    belongs_to :power
+    POWER = ['Strong', 'Weak', 'Average']
 
-    validates :strength, inclusion: { in: %w(strong weak average)}
+  validates :strength, inclusion: {
+    in: POWER,
+    message: "must be one of: #{POWER.join(', ')}"
+  }
+  belongs_to :hero
+  belongs_to :power
 end
